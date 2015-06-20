@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: bookie_development
+
+test:
+  <<: *default
+  database: bookie_test
+
+production:
+  <<: *default
+  database: bookie_production
+  username: bookie
+  password: <%= ENV['BOOKIE_DATABASE_PASSWORD'] %>
