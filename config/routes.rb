@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :items
+  resources :bookings do
+    member do
+      patch :set_close
+      patch :set_open
+    end
+  end
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

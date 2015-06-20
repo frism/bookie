@@ -1,0 +1,34 @@
+<div class="container">
+  <h3>Bookings List
+  <%= link_to "Make A New Booking", new_booking_path, class: 'btn btn-primary' %></h3>
+  <table class="table table-responsive table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Booking ID</th>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.id %></td>
+        <td><%= booking.item.name %></td>
+        <td><%= booking.quantity %></td>
+        <td><%= booking.start_date.strftime("%B %d, %Y") %></td>
+        <td><%= booking.end_date.strftime("%B %d, %Y") %></td>
+        <td><%= booking.status %></td>
+        <td>
+          <%= link_to 'Close',set_close_booking_path(booking), method: :patch, class: "btn btn-danger btn-xs" %>
+          <%= link_to 'Open',set_open_booking_path(booking), method: :patch, class: "btn btn-success btn-xs" %>
+        </td>
+      <tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div><!-- /.container -->

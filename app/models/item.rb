@@ -6,6 +6,8 @@ class Item < ActiveRecord::Base
 
   after_create :random_product_code
 
+  has_many :bookings
+
   def is_returnable?
     status === "Returnable"
   end
