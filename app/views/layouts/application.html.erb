@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Bookie</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-  <!-- Bootstrap core CSS -->
-  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-</head>
-<body>
+  <head>
+    <title>Bookie</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  </head>
 
-<%= yield %>
+  <%= render partial: 'alert' %>
 
-</body>
+  <div class="container header clearfix">
+    <nav>
+      <ul class="nav nav-pills pull-right">
+        <li role="presentation"> <%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %> </li>
+      </ul>
+    </nav>
+    <h3 class="text-muted"><%= link_to "Bookie", root_path %></h3>
+  </div>
+
+  <body>
+    <%= yield %>
+  </body>
+
+  <div class="container">
+    <footer class="footer pull-right">
+      <p>&copy; Bookie 2015</p>
+    </footer>
+  </div>
 </html>
