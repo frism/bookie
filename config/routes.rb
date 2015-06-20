@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  resources :users
-  resources :sessions
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
 
-  resources :items
-  resources :bookings do
+  resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :bookings, only: [:index, :new, :create, :edit, :update, :destroy] do
     member do
       patch :set_close
       patch :set_open
