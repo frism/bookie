@@ -1,0 +1,11 @@
+<div class="container">
+  <h3>Sign Up</h3>
+
+  <%= bootstrap_form_for @user do |f| %>
+    <%= f.text_field :email %>
+    <%= f.password_field :password %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.submit "Sign Up" %>
+    <%= link_to "Cancel", root_path, class: 'btn btn-default' %>
+  <% end %>
+</div>

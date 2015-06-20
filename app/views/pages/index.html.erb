@@ -2,6 +2,15 @@
   <div class="jumbotron">
     <h1>Bookie</h1>
     <p class="lead">Welcome to Bookie 0.1</p>
+    <% if current_user %>
+      <p class="label label-info">
+        You're logged in as <%= current_user.email %>.
+        <%= link_to "Log Out?", logout_path %>
+      </p>
+    <% else %>
+      <%= link_to "Sign Up", signup_path, class: 'btn btn-success btn-lg' %>
+      <%= link_to "Sign In", login_path, class: 'btn btn-primary btn-lg' %>
+    <% end %>
   </div>
 
   <div class="row marketing">
