@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
 
   before_action :require_user, only: [:new]
+  before_action :require_admin, only: [:index, :update]
 
   def index
     @bookings = Booking.all
