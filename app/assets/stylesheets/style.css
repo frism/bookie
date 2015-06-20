@@ -1,1 +1,8 @@
+/* Custom CSS */
 
+.alert {
+  position: absolute;
+  z-index: 1002;
+  top: 0;
+  width: 100%;
+}

@@ -1,0 +1,30 @@
+<div class="container">
+  <h3>Items
+  <%= link_to "New Item", new_item_path, class: 'btn btn-primary' %></h3>
+  <table class="table table-responsive table-striped table-hover" class="display">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @items.any? %>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.code %></td>
+          <td><%= item.name %></td>
+          <td><%= item.quantity %></td>
+          <td><%= item.status %></td>
+          <td><%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, edit_item_path(item), class: 'btn btn-warning btn-xs' %>
+            <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, item_path(item), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
