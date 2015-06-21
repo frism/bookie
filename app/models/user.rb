@@ -15,14 +15,6 @@ class User < ActiveRecord::Base
     self.status ||= "Active"
   end
 
-  def is_active?
-    status === "Active"
-  end
-
-  def is_suspended?
-    status === "Suspended"
-  end
-
   def check_status
     self.bookings.pluck(:status).include?(2) ? self.update(status: 1) : self.update(status: 0)
   end
