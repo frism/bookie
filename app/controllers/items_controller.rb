@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
   def update
     if @item.update_attributes(item_params)
       flash[:notice] = "The #{@item.name} was successfully updated."
-      redirect_to item_path(@item)
+      redirect_to items_path
     else
       render 'edit'
       flash[:alert] = 'Something went wrong, try again?'
@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :code, :quantity, :status)
+    params.require(:item).permit(:name, :code, :quantity, :returnable, :status)
   end
 
 end

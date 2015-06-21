@@ -4,8 +4,8 @@ class CreateItems < ActiveRecord::Migration
       t.string :code
       t.string :name
       t.integer :quantity
-      t.integer :status
-
+      t.boolean :returnable, default: true
+      t.integer :status, default: 1
       t.timestamps null: false
     end
   end

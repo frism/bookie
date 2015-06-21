@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(version: 20150620094730) do
     t.string   "code"
     t.string   "name"
     t.integer  "quantity"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "returnable", default: true
+    t.integer  "status",     default: 1
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|

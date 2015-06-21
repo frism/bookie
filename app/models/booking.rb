@@ -35,9 +35,9 @@ class Booking < ActiveRecord::Base
 
   def available_quantity
     if self.quantity > self.item.quantity && self.item.quantity != 0
-      errors.add(:quantity, ": You can't add more than #{self.item.quantity}")
+      errors.add(:quantity, "You can't book more than #{self.item.quantity}")
     elsif self.item.quantity == 0
-      errors.add(:quantity, ": Sorry! #{self.item.name} is currently out of stock")
+      errors.add(:quantity, "Sorry! #{self.item.name} is currently out of stock")
     end
   end
 

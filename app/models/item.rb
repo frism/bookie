@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
 
-  enum status: { returnable: 0, not_returnable: 1 }
+  enum status: { not_available: 0, available: 1 }
 
   validates_presence_of :name, :quantity, :status
 
@@ -8,12 +8,8 @@ class Item < ActiveRecord::Base
 
   has_many :bookings
 
-  def is_returnable?
-    status === "Returnable"
-  end
-
-  def is_not_returnable?
-    status === "Not Returnable"
+  def returnable?
+    self.returnable == true
   end
 
   def random_product_code

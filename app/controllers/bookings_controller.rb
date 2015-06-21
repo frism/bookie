@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
 
   before_action :require_user, only: [:new]
-  before_action :require_admin, only: [:index, :update]
+  before_action :set_booking, only: [:set_open, :set_close, :update]
+  # before_action :require_admin, only: [:index, :update]
 
   def index
     @bookings = Booking.all
@@ -14,7 +15,7 @@ class BookingsController < ApplicationController
   def create
     @booking = current_user.bookings.new(booking_params)
     if @booking.save
-      redirect_to bookings_path, notice: 'Your booking has been sucessfully submitted'
+      redirect_to root_path, notice: 'Your booking has been sucessfully submitted'
     else
       flash[:alert] = 'Opps, thas was embarrassing. Try again?'
       render 'new'
@@ -28,6 +29,10 @@ class BookingsController < ApplicationController
 
   def set_close
     @booking.update_attributes(status: 1)
+    adjust_quantity = @booking.quantity + @booking.item.quantity
+    if @booking.item.returnable?
+      @booking.item.update_attributes(:quantity => adjust_quantity)
+    end
     redirect_to bookings_path
   end
 
