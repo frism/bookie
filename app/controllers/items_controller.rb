@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_filter :set_item, only: [:show, :edit, :update, :destroy]
-  # before_action :require_admin
+  before_action :require_admin
 
   def index
     @items = Item.all

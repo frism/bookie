@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
 
   before_action :require_user, only: [:new]
   before_action :set_booking, only: [:set_open, :set_close, :update]
-  # before_action :require_admin, only: [:index, :update]
+  before_action :require_admin, only: [:index, :set_open, :set_close, :update]
 
   def index
     @bookings = Booking.all
