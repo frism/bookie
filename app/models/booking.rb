@@ -12,18 +12,6 @@ class Booking < ActiveRecord::Base
 
   after_initialize :set_default_status, :if => :new_record?
 
-  def is_open?
-    status === "Open"
-  end
-
-  def is_closed?
-    status === "Closed"
-  end
-
-  def is_expired?
-    status === "Expired"
-  end
-
   def set_default_status
     self.status ||= 0
   end

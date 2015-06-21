@@ -23,7 +23,9 @@ class BookingsController < ApplicationController
   end
 
   def set_open
+    adjust_quantity = @booking.item.quantity - @booking.quantity
     @booking.update_attributes(status: 0)
+    @booking.item.update_attributes(:quantity => adjust_quantity)
     redirect_to bookings_path
   end
 

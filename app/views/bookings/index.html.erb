@@ -22,8 +22,11 @@
         <td><%= booking.end_date.strftime("%B %d, %Y") %></td>
         <td><%= booking.status %></td>
         <td>
-          <%= link_to 'Close',set_close_booking_path(booking), method: :patch, class: "btn btn-danger btn-xs" %>
-          <%= link_to 'Open',set_open_booking_path(booking), method: :patch, class: "btn btn-success btn-xs" %>
+          <% if booking.closed? %>
+            <%= link_to 'Open',set_open_booking_path(booking), method: :patch, class: "btn btn-success btn-xs" %>
+          <% else %>
+            <%= link_to 'Close',set_close_booking_path(booking), method: :patch, class: "btn btn-danger btn-xs" %>
+          <% end %>
         </td>
       <tr>
       <% end %>
