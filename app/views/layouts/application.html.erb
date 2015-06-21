@@ -19,10 +19,6 @@
         <li role="presentation"> <%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %> </li>
         <li role="presentation"> <%= link_to '<i class="fa fa-th"></i> New Booking'.html_safe, new_booking_path %> </li>
         <li role="presentation"> <%= link_to '<i class="fa fa-check-square-o"></i> My Bookings'.html_safe, pages_booking_path %> </li>
-        <% if current_user && current_user.admin? %>
-          <li role="presentation"> <%= link_to '<i class="fa fa-folder-open"></i> Items'.html_safe, items_path %> </li>
-          <li role="presentation"> <%= link_to '<i class="fa fa-shopping-cart"></i> Bookings'.html_safe, bookings_path %> </li>
-        <% end %>
       </ul>
     </nav>
     <h3 class="text-muted"><%= link_to "Bookie", root_path %></h3>
@@ -34,7 +30,13 @@
 
   <div class="container">
     <footer class="footer pull-right">
-      <p>&copy; Bookie 2015</p>
+      <p>
+        <% if current_user && current_user.admin? %>
+          [ <%= link_to '<i class="fa fa-folder-open"></i> Items'.html_safe, items_path %> ]
+          [ <%= link_to '<i class="fa fa-shopping-cart"></i> Bookings'.html_safe, bookings_path %> ]
+        <% end %>
+        &copy; Bookie 2015
+      </p>
     </footer>
   </div>
 </html>
