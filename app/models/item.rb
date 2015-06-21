@@ -8,6 +8,8 @@ class Item < ActiveRecord::Base
 
   has_many :bookings
 
+  scope :available, -> { where(status: 1) }
+
   def returnable?
     self.returnable == true
   end

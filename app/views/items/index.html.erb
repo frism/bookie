@@ -19,7 +19,7 @@
           <td><%= item.code %></td>
           <td><%= item.name %></td>
           <td><%= item.quantity %></td>
-          <td><%= item.status %></td>
+          <td><%= item.status.humanize %></td>
           <td><%= item.returnable %></td>
           <td><%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, edit_item_path(item), class: 'btn btn-warning btn-xs' %>
             <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, item_path(item), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %>
